@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adekoya Sarah — Data Analytics Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17203D;
+    --paper:#EFEDE3;
+    --paper-card:#F7F6EF;
+    --gold:#B5812A;
+    --teal:#2F6F62;
+    --rust:#A8452F;
+    --grey:#5B5F6B;
+    --line:#D8D4C6;
+    --max:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 34px 34px;
+    background-position: -1px -1px;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  a{color:var(--ink);}
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .backdrop{
+    background:var(--paper-card);
+    border-left:1px solid var(--line);
+    border-right:1px solid var(--line);
+    max-width:calc(var(--max) + 56px);
+    margin:0 auto;
+  }
+
+  /* ---------- Hero ---------- */
+  header{
+    padding:100px 0 70px;
+  }
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--grey);
+    letter-spacing:0.02em;
+    margin:0 0 22px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(34px, 5.4vw, 56px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:0 0 22px;
+    max-width:12ch;
+  }
+  .lede{
+    font-size:18px;
+    color:var(--grey);
+    max-width:56ch;
+    margin:0 0 46px;
+  }
+  .stats{
+    display:flex;
+    gap:44px;
+    flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    padding-top:28px;
+  }
+  .stat b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:34px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .stat span{
+    font-size:13px;
+    color:var(--grey);
+  }
+
+  /* ---------- section shared ---------- */
+  section{
+    padding:64px 0;
+    border-top:1px solid var(--line);
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:28px;
+    margin:0 0 20px;
+  }
+  p{ margin:0 0 16px; max-width:64ch; }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap:40px;
+  }
+  .about-grid ul{
+    margin:0; padding:0; list-style:none;
+    font-size:14px;
+    color:var(--grey);
+    border-left:2px solid var(--gold);
+    padding-left:16px;
+  }
+  .about-grid li{ margin-bottom:12px; }
+  .about-grid li b{ color:var(--ink); font-weight:600; }
+
+  /* ---------- Timeline / levels ---------- */
+  .timeline{
+    position:relative;
+    padding-left:38px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:11px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .level{
+    position:relative;
+    padding-bottom:56px;
+  }
+  .level:last-child{ padding-bottom:0; }
+  .node{
+    position:absolute;
+    left:-38px; top:2px;
+    width:24px; height:24px;
+    border-radius:50%;
+    background:var(--paper-card);
+    border:1px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+  }
+  .level-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--grey);
+    margin-bottom:6px;
+  }
+  .level h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:22px;
+    margin:0 0 12px;
+  }
+  .findings{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:14px;
+    margin:18px 0;
+  }
+  .finding{
+    border:1px solid var(--line);
+    background:var(--paper);
+    padding:14px 16px;
+  }
+  .finding .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:20px;
+    color:var(--teal);
+    display:block;
+    margin-bottom:4px;
+  }
+  .finding.negative .num{ color:var(--rust); }
+  .finding .lbl{
+    font-size:13px;
+    color:var(--grey);
+  }
+  .tags{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin-top:14px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink);
+    border:1px solid var(--line);
+    padding:4px 10px;
+  }
+
+  /* ---------- Skills ---------- */
+  .skillgrid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:28px 40px;
+  }
+  .skillgroup h4{
+    font-size:13px;
+    text-transform:none;
+    color:var(--gold);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  .skillgroup div{
+    font-size:15px;
+    color:var(--ink);
+    line-height:1.9;
+  }
+
+  /* ---------- Reflections ---------- */
+  .reflections{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .reflection{
+    padding:24px 26px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .reflection p{ font-size:14px; color:var(--grey); margin:0; }
+  .reflection b{ display:block; color:var(--ink); margin-bottom:8px; font-family:'Fraunces', serif; font-size:17px; font-weight:500; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:56px 0 90px;
+  }
+  .linklist{
+    display:flex; gap:28px; flex-wrap:wrap;
+    margin:22px 0 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+  }
+  .linklist a{
+    text-decoration:none;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+  .linklist a:hover{ color:var(--gold); border-color:var(--gold); }
+  .note{
+    margin-top:34px;
+    font-size:12px;
+    color:var(--grey);
+    border-top:1px dashed var(--line);
+    padding-top:16px;
+  }
+
+  @media (max-width: 640px){
+    .about-grid, .skillgrid, .findings{ grid-template-columns:1fr; }
+    .reflections{ grid-template-columns:1fr; }
+    header{ padding:64px 0 44px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="backdrop">
+  <div class="wrap">
+
+    <header>
+      <p class="kicker">Adekoya Sarah — Data Analytics</p>
+      <h1>Messy spreadsheets in. Clear decisions out.</h1>
+      <p class="lede">A three-level data analytics internship with Codveda Technology — cleaning real datasets, building predictive models, and turning numbers into findings someone could actually act on.</p>
+      <div class="stats">
+        <div class="stat"><b>6</b><span>projects completed</span></div>
+        <div class="stat"><b>4</b><span>real-world datasets</span></div>
+        <div class="stat"><b>0.97</b><span>precision, best model</span></div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="about-grid">
+        <div>
+          <h2>About this work</h2>
+          <p>Across three levels — Basic, Intermediate, and Advanced — this internship moved from foundational data cleaning through regression and time series work, into machine learning and natural language processing. Every project used a genuine public dataset, worked end-to-end in Python, and was documented step by step rather than run as a black box.</p>
+          <p>Below is a level-by-level walkthrough of what was built, what the data actually showed, and which tools did the work.</p>
+        </div>
+        <ul>
+          <li><b>Organization</b><br>Codveda Technology</li>
+          <li><b>Track</b><br>Data Analytics</li>
+          <li><b>Environment</b><br>Google Colab, Power BI Desktop</li>
+          <li><b>Format</b><br>Three notebooks, one dashboard, six projects</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>The work, level by level</h2>
+      <div class="timeline">
+
+        <div class="level">
+          <div class="node">1</div>
+          <p class="level-tag">Level 1 — Basic</p>
+          <h3>Cleaning a messy dataset, then reading what it says</h3>
+          <p>Started with a 732-row social sentiment dataset carrying stray index columns, inconsistent whitespace, and hidden duplicates — the kind of mess real data actually arrives in.</p>
+          <div class="findings">
+            <div class="finding">
+              <span class="num">22 rows</span>
+              <span class="lbl">duplicates surfaced only after whitespace was fixed</span>
+            </div>
+            <div class="finding">
+              <span class="num">0.998</span>
+              <span class="lbl">correlation between Likes and Retweets</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">pandas</span>
+            <span class="tag">matplotlib</span>
+            <span class="tag">seaborn</span>
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="node">2</div>
+          <p class="level-tag">Level 2 — Intermediate</p>
+          <h3>Predicting house prices, decomposing a stock trend</h3>
+          <p>Built a housing regression model, then extended it from one feature to thirteen. Separately, decomposed four years of Apple stock data into trend, seasonality, and residual noise.</p>
+          <div class="findings">
+            <div class="finding">
+              <span class="num">R² 0.37 → 0.67</span>
+              <span class="lbl">accuracy gain from 1 feature to 13, predicting home value</span>
+            </div>
+            <div class="finding">
+              <span class="num">30-day</span>
+              <span class="lbl">moving average used to separate signal from daily noise</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">scikit-learn</span>
+            <span class="tag">statsmodels</span>
+            <span class="tag">pandas</span>
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="node">3</div>
+          <p class="level-tag">Level 3 — Advanced</p>
+          <h3>Predicting churn, reading sentiment, building a dashboard</h3>
+          <p>Trained and compared three classifiers on a telecom churn dataset, tuned the strongest with grid search, then shifted to NLP — cleaning and scoring social text with TextBlob. Closed with an interactive Power BI dashboard.</p>
+          <div class="findings">
+            <div class="finding">
+              <span class="num">96.8%</span>
+              <span class="lbl">precision from a tuned Random Forest classifier</span>
+            </div>
+            <div class="finding negative">
+              <span class="num">4+ calls</span>
+              <span class="lbl">to support strongly tracked with customer churn</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">scikit-learn</span>
+            <span class="tag">NLTK</span>
+            <span class="tag">TextBlob</span>
+            <span class="tag">Power BI</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Tools & techniques</h2>
+      <div class="skillgrid">
+        <div class="skillgroup">
+          <h4>Languages & libraries</h4>
+          <div>Python · pandas · NumPy</div>
+        </div>
+        <div class="skillgroup">
+          <h4>Machine learning</h4>
+          <div>scikit-learn · Logistic Regression · Decision Trees · Random Forest · Grid Search</div>
+        </div>
+        <div class="skillgroup">
+          <h4>Statistics & time series</h4>
+          <div>statsmodels · seasonal decomposition · correlation analysis</div>
+        </div>
+        <div class="skillgroup">
+          <h4>NLP</h4>
+          <div>NLTK · TextBlob · WordCloud</div>
+        </div>
+        <div class="skillgroup">
+          <h4>Visualization & BI</h4>
+          <div>matplotlib · seaborn · Power BI Desktop</div>
+        </div>
+        <div class="skillgroup">
+          <h4>Workflow</h4>
+          <div>Google Colab · GitHub · Jupyter notebooks</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reflections">
+      <h2>What the debugging taught me</h2>
+      <div class="reflections">
+        <div class="reflection">
+          <b>Order matters in cleaning</b>
+          <p>Duplicate rows stayed hidden until whitespace was stripped first — the sequence of cleaning steps changes what you actually find.</p>
+        </div>
+        <div class="reflection">
+          <b>Accuracy can lie</b>
+          <p>A churn model can hit 86% accuracy while catching almost none of the customers who actually leave. Recall told the real story.</p>
+        </div>
+        <div class="reflection">
+          <b>More features, not more magic</b>
+          <p>Regression accuracy nearly doubled just by giving the model thirteen relevant inputs instead of one.</p>
+        </div>
+        <div class="reflection">
+          <b>Tuning doesn't always move the needle</b>
+          <p>Grid search on the Random Forest confirmed the defaults were already close to optimal — a valid, honest result in itself.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h2>Links</h2>
+      <p>Full notebooks, the Power BI dashboard file, and project write-ups are collected in one place.</p>
+      <div class="linklist">
+        <a href="https://github.com/sarahadekoya083/codveda-data-analytics-internship" target="_blank" rel="noopener">GitHub repository</a>
+        <a href="https://linkedin.com/in/sarahadekoya" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
